@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function updateConfigFile(value) {
     const apiUrl = 'https://api.github.com/repos/jucscl/wol/contents/flag';
-    const authToken = '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';
+    const authToken = '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';
 
     try {
         // Obtén el contenido actual del archivo
