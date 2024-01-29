@@ -28,9 +28,6 @@ async function updateConfigFile(value) {
             }
         });
 
-        const dataGet = await responseGet.json();
-        const currentSha = dataGet.sha;
-
         // Actualiza el contenido del archivo
         const responsePatch = await fetch(apiUrl, {
             method: 'PATCH',
