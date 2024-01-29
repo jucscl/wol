@@ -17,21 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function updateConfigFile(value) {
     const apiUrl = 'https://api.github.com/repos/jucscl/wol/contents/flag';
-    let authToken;
-
-    fetch('https://pastebin.com/raw/daZdhizz')
-    .then(response => response.text())
-    .then(data => {
-        // Almacena el contenido del archivo en la variable authToken
-        authToken = data;
-
-        // Ahora puedes utilizar la variable authToken según tus necesidades
-        console.log('Token leído:', authToken);
-    })
-    .catch(error => {
-        console.error('Error al leer el archivo:', error);
-    });
-
+    let authToken = atob('Z2hwX3JvYUZkSkx2VUF2cjlzOFZGNXlUNGx1cWE3bDJuUDJKOWRMNA==');
 
     try {
         // Obtén el contenido actual del archivo
