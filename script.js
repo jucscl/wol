@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function updateConfigFile(value) {
     const apiUrl = 'https://api.github.com/repos/jucscl/wol/contents/flag';
-    const authToken = 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;
+    const authToken = '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';
 
     try {
         // Obtén el contenido actual del archivo
         const responseGet = await fetch(apiUrl, {
             headers: {
                 'Authorization': `Bearer ${authToken}`,
-                'Accept': 'application/vnd.github.v3+json'
+                'X-GitHub-Api-Version': ' 2022-11-28'
             }
         });
 
@@ -36,8 +36,8 @@ async function updateConfigFile(value) {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${authToken}`,
-                'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json'
+                'X-GitHub-Api-Version': ' 2022-11-28',
+                'Content-Type': 'text/plain'
             },
             body: JSON.stringify({
                 message: 'Actualizando archivo config',
