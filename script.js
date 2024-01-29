@@ -23,7 +23,7 @@ async function updateConfigFile(value) {
         // Obtén el contenido actual del archivo
         const responseGet = await fetch(apiUrl, {
             headers: {
-                'Authorization': 'token ${authToken}',
+                'Authorization': `token ${authToken}`,
                 'X-GitHub-Api-Version': '2022-11-28'
             }
         });
@@ -32,7 +32,7 @@ async function updateConfigFile(value) {
         const responsePatch = await fetch(apiUrl, {
             method: 'PATCH',
             headers: {
-                'Authorization': 'token ${authToken',
+                'Authorization': `token ${authToken}`,
                 'X-GitHub-Api-Version': '2022-11-28',
                 'Content-Type': 'text/plain'
             },
