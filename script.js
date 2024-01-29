@@ -17,26 +17,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function updateConfigFile(value) {
     const apiUrl = 'https://api.github.com/repos/jucscl/wol/contents/flag';
-    const authToken = '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';
+    const authToken = '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';
 
     try {
         // Obtén el contenido actual del archivo
         const responseGet = await fetch(apiUrl, {
             headers: {
-                'Authorization': `token ${authToken}`,
-                'X-GitHub-Api-Version': '2022-11-28'
+                'Authorization': `Bearer ${authToken}`,
+                'Accept': 'application/vnd.github.v3+json'
             }
         });
+
+        const dataGet = await responseGet.json();
+        const currentSha = dataGet.sha;
 
         // Actualiza el contenido del archivo
         const responsePatch = await fetch(apiUrl, {
             method: 'PATCH',
             headers: {
-                'Authorization': `token ${authToken}`,
-                'X-GitHub-Api-Version': '2022-11-28',
-                'Content-Type': 'text/plain'
+                'Authorization': `Bearer ${authToken}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json'
             },
-            body: value
+            body: JSON.stringify({
+                message: 'Actualizando archivo config',
+                content: btoa(value), // Codifica el valor a base64
+                sha: currentSha
+            })
         });
 
         const dataPatch = await responsePatch.json();
