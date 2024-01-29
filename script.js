@@ -39,11 +39,7 @@ async function updateConfigFile(value) {
                 'X-GitHub-Api-Version': ' 2022-11-28',
                 'Content-Type': 'text/plain'
             },
-            body: JSON.stringify({
-                message: 'Actualizando archivo config',
-                content: btoa(value), // Codifica el valor a base64
-                sha: currentSha
-            })
+            body: value
         });
 
         const dataPatch = await responsePatch.json();
